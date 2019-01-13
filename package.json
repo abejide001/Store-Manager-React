@@ -4,7 +4,8 @@
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "repository": {
@@ -17,13 +18,22 @@
   "bugs": {
     "url": "https://github.com/abejide001/Store-Manager-React/issues"
   },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ]
+  },
   "homepage": "https://github.com/abejide001/Store-Manager-React#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.0.0-beta.6",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -35,8 +45,10 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "jest": "^23.6.0",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.3"
+    "react-dom": "^16.7.0"
   }
 }
