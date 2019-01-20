@@ -1,0 +1,132 @@
+
+@import url("https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D");
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Global */
+
+.container {
+  margin: auto;
+  width: 80%;
+  overflow: hidden;
+}
+.landing-page {
+  height: 100%;
+  display:  flex;
+  flex-direction: column;
+}
+.btn {
+  width: 100%;
+  background: gray;
+  border-bottom: 2px solid gray;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 12px 0px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  color: white;
+  font-family: "K2D", sans-serif;
+}
+
+.btn:hover {
+  background-image: linear-gradient(to left, gray, violet);
+}
+
+/* Header */
+
+header {
+  min-height: 70px;
+  border-bottom: 1px solid white;
+}
+
+header a {
+  text-decoration: none;
+  color: gray;
+  font: normal 22px "K2D", sans-serif;
+}
+
+header ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+header li {
+  display: inline;
+  padding: 0px 20px 0px 10px;
+}
+
+#header-title {
+  float: left;
+}
+
+#header-title img {
+  margin-top: 5px;
+  height: 50px;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+/* Showcase */
+
+#showcase {
+  min-height: 510px;
+  background: url("../images/background.jpg") no-repeat left center;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  font-family: "K2D", sans-serif;
+  flex: 1;
+}
+
+#showcase h1 {
+  font-size: 80px;
+  margin: 100px 0px 10px 0px;
+  font-weight: bold;
+}
+
+#showcase p {
+  font-size: 33px;
+}
+
+/* Footer */
+
+footer {
+  font-family: "K2D", sans-serif;
+  background-image: linear-gradient( to top, rgb(73, 74, 76), rgb(181, 189, 201) );
+  min-height: 65px;
+}
+
+footer h3 {
+  text-align: center;
+  color: white;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  header #header-title,
+  header nav,
+  header nav li {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+  header a {
+    text-align: center;
+    font-size: 17px;
+  }
+  #showcase  {
+    min-height: 850px;
+    margin-top:30px;
+  }
+  #showcase h1 {
+    font-size: 60px;
+  }
+}

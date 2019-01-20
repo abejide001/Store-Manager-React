@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomeBody /> render() renders the component 1`] = `
+<div>
+  <section
+    id="showcase"
+  >
+    <div
+      className="container"
+    >
+      <h1>
+        Store Manager.
+      </h1>
+      <p>
+        Manage your sales and product inventory records.
+      </p>
+    </div>
+  </section>
+</div>
+`;
