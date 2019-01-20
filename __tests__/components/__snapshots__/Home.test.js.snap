@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Home /> render() renders the component 1`] = `
-<div>
-  <h1>
-    This is home file
-  </h1>
+<div
+  className="landing-page"
+>
+  <Header />
+  <HomeBody />
+  <Footer />
 </div>
 `;

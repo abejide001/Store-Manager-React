@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> render() renders the component 1`] = `
+<div>
+  <footer>
+    <div
+      className="container"
+    >
+      <h3>
+        Store Manager
+         
+        2019
+      </h3>
+    </div>
+  </footer>
+</div>
+`;

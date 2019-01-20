@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import '../assets/css/style.css';
+import Footer from './layouts/Footer';
+import Header from './layouts/Header';
+import HomeBody from './layouts/HomeBody';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div>
-        <h1>This is home file</h1>
-      </div>
-    )
-  }
+export default function Home() {
+  return (
+    <div className="landing-page">
+      <Header />
+      <HomeBody />
+      <Footer />
+    </div>
+  );
 }
