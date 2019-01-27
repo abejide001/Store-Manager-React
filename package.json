@@ -23,8 +23,10 @@
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>__tests__/setup/setupEnzyme.js",
     "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/__mocks__/", "<rootDir>/__tests__/setup/"
-    ], "moduleNameMapper": {
+      "<rootDir>/__tests__/__mocks__/",
+      "<rootDir>/__tests__/setup/"
+    ],
+    "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__tests__/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__tests__/__mocks__/styleMock.js"
     }
@@ -58,7 +60,10 @@
     "jest": "^23.6.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2"
   }
