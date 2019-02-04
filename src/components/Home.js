@@ -1,13 +1,11 @@
 import React from 'react';
 import '../assets/css/style.css';
-import Footer from './layouts/Footer';
-import Header from './layouts/Header';
 import HomeBody from './layouts/HomeBody';
+import Footer from './layouts/Footer';
 
 export default function Home() {
   return (
-    <div className="landing-page">
-      <Header />
+    <div>
       <HomeBody />
       <Footer />
     </div>

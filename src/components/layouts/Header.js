@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../assets/css/style.css';
 import logo from '../../assets/images/logo.png';
 
@@ -13,7 +14,7 @@ export default function Header() {
           <nav>
             <ul>
               <li>
-                <a href="./login.html">Login</a>
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </nav>

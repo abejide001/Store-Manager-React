@@ -17,11 +17,12 @@ exports[`<Header /> render() renders the component 1`] = `
       <nav>
         <ul>
           <li>
-            <a
-              href="./login.html"
+            <Link
+              replace={false}
+              to="/login"
             >
               Login
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
