@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D");
+#login-area {
+  min-height: 510px;
+  font-family: "K2D", sans-serif;
+  flex: 1;
+}
+.login-showcase {
+  display:  flex;
+  flex-direction: column;
+  height: 100%;
+}
+.login-body {
+  position: absolute;
+  width: 100%;
+  top:0;
+  bottom: 0;
+}
+.login-box {
+  width: 280px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 100px;
+}
+
+.login-box h1 {
+  font-size: 40px;
+  border-bottom: 2px solid gray;
+}
+
+.login-textbox {
+  width: 100%;
+  font-size: 30px;
+  overflow: hidden;
+  padding: 8px 0px;
+  margin: 8px 0px;
+  border-bottom: 1px solid lightcoral;
+}
+
+.login-textbox input {
+  border: none;
+  outline: none;
+  background: none;
+  color: black;
+  font-size: 20px;
+  float: left;
+  width: 80%;
+  font-family: "K2D", sans-serif;
+}
+
+.login-textbox i {
+  width: 40px;
+  float: left;
+  text-align: center;
+  font-size: 24px;
+}
+.alert {
+  display: none;
+}
+.alert.error .inner {
+  border: 2px solid rgb(238,211,215);
+  background-color: rgb(242,222,222);
+  font-size: 20px;
+}
+
+.alert.error .inner,.alert.error .close {
+  color: rgb(185,74,72);
+}
+
+@media (max-width: 348px) {
+  .login-box h1 {
+    font-size: 25px;
+  }
+  .login-box {
+    margin-top: 150px;
+  }
+}
+@media (max-width: 769px) {
+  .login-box h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+  .login-box {
+    margin-top: 150px;
+  }
+  #login-area  {
+    min-height: 850px;
+  }
+}

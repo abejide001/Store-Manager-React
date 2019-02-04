@@ -1,7 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomeBody /> render() renders the component 1`] = `
-<div>
+<div
+  className="landing-page"
+>
+  <header>
+    <div
+      className="container"
+    >
+      <div
+        id="header-title"
+      >
+        <img
+          alt="logo"
+          src="test-file-stub"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <Link
+              replace={false}
+              to="/login"
+            >
+              Login
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <section
     id="showcase"
   >
