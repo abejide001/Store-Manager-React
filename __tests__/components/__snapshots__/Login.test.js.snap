@@ -1,7 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> render() renders the component 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div>
+  <div
+    className="login-body"
+  >
+    <div
+      className="login-showcase"
+    >
+      <header>
+        <div
+          className="container"
+        >
+          <div
+            id="header-title"
+          >
+            <Link
+              replace={false}
+              to="/"
+            >
+              <img
+                alt="logo"
+                src="test-file-stub"
+              />
+            </Link>
+          </div>
+        </div>
+      </header>
+      <section
+        id="login-area"
+      >
+        <div
+          className="container"
+        >
+          <form
+            className="login-form"
+            onSubmit={[Function]}
+          >
+            <div
+              className="login-box"
+            >
+              <h1>
+                Login
+              </h1>
+              <div
+                className="login-textbox"
+              >
+                <i
+                  className="fas fa-envelope"
+                />
+                <input
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Email"
+                  required={true}
+                  type="email"
+                  value=""
+                />
+              </div>
+              <div
+                className="login-textbox"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fas fa-key"
+                />
+                <input
+                  id="password"
+                  name="password"
+                  onChange={[Function]}
+                  placeholder="Password"
+                  required={true}
+                  type="password"
+                  value=""
+                />
+              </div>
+              <input
+                className="btn"
+                type="submit"
+                value="LOGIN"
+              />
+              <ToastContainer
+                autoClose={5000}
+                bodyClassName={null}
+                className={null}
+                closeButton={
+                  <CloseButton
+                    ariaLabel="close"
+                  />
+                }
+                closeOnClick={true}
+                draggable={true}
+                draggablePercent={80}
+                hideProgressBar={false}
+                newestOnTop={false}
+                pauseOnFocusLoss={true}
+                pauseOnHover={true}
+                position="top-right"
+                progressClassName={null}
+                progressStyle={null}
+                rtl={false}
+                style={null}
+                toastClassName={null}
+                transition={[Function]}
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <Footer />
+  </div>
+</div>
 `;

@@ -16,7 +16,7 @@ import logo from '../assets/images/logo.png';
 import Footer from './layouts/Footer';
 import { loginUser } from '../actions/authActions';
 
-class Login extends Component {
+export class Login extends Component {
   state = {
     data: {
       email: '',
@@ -48,7 +48,6 @@ handleChange = (e) => {
 };
 
 render() {
-  console.log(this.state.errors)
   const { email, password } = this.state.data;
   return (
     <div>
