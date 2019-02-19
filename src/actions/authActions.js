@@ -7,6 +7,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import basePath from '../utils/basePath';
 
 // eslint-disable-next-line import/prefer-default-export
 export const setUserError = error => ({
@@ -14,7 +15,7 @@ export const setUserError = error => ({
   payload: error,
 });
 export const loginUser = (userData, history) => (dispatch) => {
-  axios.post('https://store-manager-store.herokuapp.com/api/v1/auth/signin', userData)
+  axios.post(`${basePath}/auth/signin`, userData)
     .then((res) => {
       const { token } = res.data;
       localStorage.setItem('authToken', token);
