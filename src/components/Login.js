@@ -22,23 +22,27 @@ class Login extends Component {
       email: '',
       password: '',
     },
-    errors: {},
+    errors: '',
   }
 
-  componentWillReceiveProps(nexProps) {
-    if (nexProps.error) {
-      this.setState({ errors: nexProps.error });
+  componentWillReceiveProps(propsNext) {
+    if (propsNext.auth.user.userId === 'admin') {
+      this.props.history.push('/admin');
     }
+    if (propsNext.auth.user.userId === 'attendant') {
+      this.props.history.push('/attendant');
+    }
+    if (propsNext.error) this.setState({ errors: propsNext.error });
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const user = {
       email: this.state.data.email,
       password: this.state.data.password,
     };
     this.props.loginUser(user, this.props.history);
-    toast.error(this.state.errors.message);
-    e.preventDefault();
+    if (this.state.errors !== '') toast.error(this.state.errors.message);
   }
 
 handleChange = (e) => {
@@ -48,7 +52,6 @@ handleChange = (e) => {
 };
 
 render() {
-  console.log(this.state.errors)
   const { email, password } = this.state.data;
   return (
     <div>

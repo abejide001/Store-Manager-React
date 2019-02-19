@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D');
+/* product area */
+
+#product-area {
+    min-height: 700px;
+    flex: 1;
+}
+
+#product-area h1 {
+    text-align: center;
+    color: black;
+    font: normal bold 40px 'K2D', sans-serif;
+}
+
+.products {
+    margin: 20px;
+}
+
+.product-item {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid gray;
+}
+.product-item p {
+  font-weight: bold;
+  font-family: 'K2D', sans-serif;   
+}
+.product-item img {
+    height: 150px;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.product-item img:hover {
+    transform: scale(1.2);
+}
+
+.editBtn {
+    background: gray;
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0px;
+}
+
+.editBtn a {
+     color: white;
+    text-decoration: none;
+}
+
+ .deleteBtn {
+    background: rgb(228, 66, 66);
+    color: white;
+    border: 0px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 0px;
+}
+@media (max-width: 879px) {
+    .products .product-item {
+       float: none;
+       width: 100%;
+       border: none;
+    }
+    header #header-title,
+    header nav,
+    header nav li {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    header a {
+        text-align: center;
+        font-size: 17px;
+    }
+  }
