@@ -7,7 +7,7 @@ import basePath from '../utils/basePath';
 
 // eslint-disable-next-line import/prefer-default-export
 export const getProducts = () => (dispatch) => {
-  axios.get(`${basePath}/api/v1/products`)
+  axios.get(`${basePath}/products`)
     .then((res) => {
       dispatch({
         type: GET_PRODUCTS,
@@ -17,7 +17,7 @@ export const getProducts = () => (dispatch) => {
     .catch(err => console.log(err.response.data));
 };
 export const deleteProduct = id => (dispatch) => {
-  axios.delete(`${basePath}/api/v1/products/${id}`)
+  axios.delete(`${basePath}/products/${id}`)
     .then(() => {
       window.location.reload();
       dispatch({
@@ -33,7 +33,7 @@ export const deleteProduct = id => (dispatch) => {
     });
 };
 export const editProduct = (id, productData) => (dispatch) => {
-  axios.put(`${basePath}/api/v1/products/${id}`, productData)
+  axios.put(`${basePath}/products/${id}`, productData)
     .then((res) => {
       window.location.replace('/admin');
       dispatch({
