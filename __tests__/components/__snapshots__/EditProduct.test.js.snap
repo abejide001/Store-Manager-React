@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditProduct /> render() renders the component 1`] = `
+<div>
+  <div
+    className="edit-body"
+  >
+    <div
+      className="edit-showcase"
+    >
+      <header>
+        <div
+          className="container"
+        >
+          <div
+            id="header-title"
+          >
+            <Link
+              replace={false}
+              to="/"
+            >
+              <img
+                alt="logo"
+                src="test-file-stub"
+              />
+            </Link>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <Link
+                  replace={false}
+                  to="/admin"
+                >
+                  Admin
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <section
+        id="edit"
+      >
+        <form
+          className="submission-form"
+          onSubmit={[Function]}
+        >
+          <h1>
+            EDIT PRODUCT
+          </h1>
+          <input
+            className="input1"
+            name="name"
+            onChange={[Function]}
+            placeholder="Product Name"
+            required={true}
+            type="text"
+            value=""
+          />
+          <input
+            className="input2"
+            name="price"
+            onChange={[Function]}
+            placeholder="Price"
+            required={true}
+            type="number"
+            value=""
+          />
+          <input
+            className="input3"
+            name="quantity_in_inventory"
+            onChange={[Function]}
+            placeholder="quanity in inventory"
+            required={true}
+            type="number"
+            value=""
+          />
+          <input
+            name="product_image"
+            onChange={[Function]}
+            placeholder="Image URL"
+            required={true}
+            type="url"
+            value=""
+          />
+          <input
+            id="sendBtn"
+            type="submit"
+            value="EDIT"
+          />
+        </form>
+      </section>
+      <Footer />
+    </div>
+  </div>
+</div>
+`;

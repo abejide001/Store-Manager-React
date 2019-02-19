@@ -9,6 +9,10 @@ import setAuthToken from '../utils/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 
 // eslint-disable-next-line import/prefer-default-export
+export const setUserError = error => ({
+  type: GET_ERRORS,
+  payload: error,
+});
 export const loginUser = (userData, history) => (dispatch) => {
   axios.post('https://store-manager-store.herokuapp.com/api/v1/auth/signin', userData)
     .then((res) => {
@@ -28,3 +32,8 @@ export const setCurrentUser = decoded => ({
   type: SET_CURRENT_USER,
   payload: decoded,
 });
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem('authToken');
+  setAuthToken(false);
+  dispatch(setCurrentUser({}));
+};
