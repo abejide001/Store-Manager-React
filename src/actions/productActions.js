@@ -1,10 +1,15 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 import {
-  GET_PRODUCTS, DELETE_PRODUCT, GET_ERRORS, EDIT_PRODUCT,
+  GET_PRODUCTS, DELETE_PRODUCT, GET_PRODUCT_ERROR, EDIT_PRODUCT,
 } from './types';
 import basePath from '../utils/basePath';
+import Notify from '../utils/Notify';
 
+export const setProductError = error => ({
+  type: GET_PRODUCT_ERROR,
+  payload: error,
+});
 // eslint-disable-next-line import/prefer-default-export
 export const getProducts = () => (dispatch) => {
   axios.get(`${basePath}/products`)
@@ -14,7 +19,10 @@ export const getProducts = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch(err => console.log(err.response.data));
+    .catch((err) => {
+      dispatch(setProductError(err.response.data.message));
+      Notify.notifyError(err.response.data.message);
+    });
 };
 export const deleteProduct = id => (dispatch) => {
   axios.delete(`${basePath}/products/${id}`)
@@ -42,6 +50,7 @@ export const editProduct = (id, productData) => (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log(err)
+      dispatch(setProducterror(err.response.data.message));
+      Notify.notifyError(err.response.data.message);
     });
 };

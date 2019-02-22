@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
 // eslint-disable-next-line import/no-unresolved
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
 import '../assets/css/Login.css';
@@ -22,7 +21,6 @@ class Login extends Component {
       email: '',
       password: '',
     },
-    errors: '',
   }
 
   componentWillReceiveProps(propsNext) {
@@ -32,7 +30,6 @@ class Login extends Component {
     if (propsNext.auth.user.userId === 'attendant') {
       this.props.history.push('/attendant');
     }
-    if (propsNext.error) this.setState({ errors: propsNext.error });
   }
 
   handleSubmit = (e) => {
@@ -42,7 +39,6 @@ class Login extends Component {
       password: this.state.data.password,
     };
     this.props.loginUser(user, this.props.history);
-    if (this.state.errors !== '') toast.error(this.state.errors.message);
   }
 
 handleChange = (e) => {
@@ -80,7 +76,6 @@ render() {
                     <input type="password" placeholder="Password" id="password" name="password" onChange={this.handleChange} value={password} required />
                   </div>
                   <input type="submit" value="LOGIN" className="btn" />
-                  <ToastContainer />
                 </div>
               </form>
             </div>
