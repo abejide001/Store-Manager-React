@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ToastContainer, toast } from 'react-toastify';
 // eslint-disable-next-line import/no-unresolved
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
 import '../assets/css/Login.css';
@@ -22,23 +21,24 @@ export class Login extends Component {
       email: '',
       password: '',
     },
-    errors: {},
   }
 
-  componentWillReceiveProps(nexProps) {
-    if (nexProps.error) {
-      this.setState({ errors: nexProps.error });
+  componentWillReceiveProps(propsNext) {
+    if (propsNext.auth.user.userId === 'admin') {
+      this.props.history.push('/admin');
+    }
+    if (propsNext.auth.user.userId === 'attendant') {
+      this.props.history.push('/attendant');
     }
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const user = {
       email: this.state.data.email,
       password: this.state.data.password,
     };
     this.props.loginUser(user, this.props.history);
-    toast.error(this.state.errors.message);
-    e.preventDefault();
   }
 
 handleChange = (e) => {
@@ -76,7 +76,6 @@ render() {
                     <input type="password" placeholder="Password" id="password" name="password" onChange={this.handleChange} value={password} required />
                   </div>
                   <input type="submit" value="LOGIN" className="btn" />
-                  <ToastContainer />
                 </div>
               </form>
             </div>

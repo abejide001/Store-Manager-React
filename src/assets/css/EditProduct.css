@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D");
+#edit {
+  min-height: 400px;
+  font-family: "K2D", sans-serif;
+  flex: 1;
+}
+.edit-showcase {
+  display:  flex;
+  flex-direction: column;
+  height: 100%;
+}
+.edit-body {
+  position: absolute;
+  width: 100%;
+  top:0;
+  bottom: 0;
+}
+#edit h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.submission-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 5px;
+  margin-bottom: 100px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: 2px solid gray;
+  padding: 0.5rem;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#sendBtn {
+  border: 0;
+  background: gray;
+  padding: 0.5rem;
+  color: white;
+  width: auto;
+  cursor: pointer;
+}

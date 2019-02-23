@@ -4,32 +4,7 @@ exports[`<HomeBody /> render() renders the component 1`] = `
 <div
   className="landing-page"
 >
-  <header>
-    <div
-      className="container"
-    >
-      <div
-        id="header-title"
-      >
-        <img
-          alt="logo"
-          src="test-file-stub"
-        />
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <Link
-              replace={false}
-              to="/login"
-            >
-              Login
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <Connect(Header) />
   <section
     id="showcase"
   >
