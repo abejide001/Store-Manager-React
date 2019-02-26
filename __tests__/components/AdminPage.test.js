@@ -1,11 +1,14 @@
+/* eslint-disable import/no-duplicates */
 /* eslint-disable no-undef */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+import sinon from 'sinon';
 import store from '../../src/store';
 import AdminPage from '../../src/components/AdminPage';
+import { Admin } from '../../src/components/AdminPage';
 import Footer from '../../src/components/layouts/Footer';
 
 let wrapper;
@@ -35,5 +38,27 @@ describe('Mount methods', () => {
   });
   it('should render the correct h1 text', () => {
     expect(wrapper.find('h1').render().text()).toContain('Products');
+  });
+  describe('handle methods', () => {
+    it('calls handleDelete()', () => {
+      const props = {
+        getProducts: jest.fn(),
+        deleteProduct: jest.fn(),
+        auth: jest.mock(),
+        product: {
+          products: {
+            products: {
+              value: ['ool', 'asfsfsf', 19000],
+            },
+          },
+        },
+      };
+      wrapper = shallow(<Admin {...props} />);
+      const id = 1;
+      sinon.spy(wrapper.instance(), 'handleDelete');
+      wrapper.instance().handleDelete(id);
+      expect(wrapper.instance().handleDelete.calledOnce)
+        .toEqual(true);
+    });
   });
 });

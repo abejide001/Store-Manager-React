@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import productReducer from '../../src/reducers/productReducer';
-import { GET_PRODUCTS, EDIT_PRODUCT, DELETE_PRODUCT } from '../../src/actions/types';
+import { GET_PRODUCTS, EDIT_PRODUCT, DELETE_PRODUCT, GET_PRODUCT_ERROR } from '../../src/actions/types';
 import productData from '../components/mockData';
 
 describe('Product Reducer', () => {
@@ -32,4 +32,11 @@ describe('Product Reducer', () => {
     const newState = productReducer(productData, action);
     expect(newState.products[0].id).toEqual(4);
   });
+  it('should action of type GET_PRODUCT_ERROR', () => {
+    const action = {
+      type: GET_PRODUCT_ERROR,
+    };
+    const newState = productReducer([], action)
+    expect(newState.error).toBeUndefined();
+  })
 });

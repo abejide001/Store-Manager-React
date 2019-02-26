@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login /> render() renders the component 1`] = `
+exports[`<Login /> render() shouldn render the component 1`] = `
 <div>
   <div
     className="login-body"
@@ -80,30 +80,6 @@ exports[`<Login /> render() renders the component 1`] = `
                 className="btn"
                 type="submit"
                 value="LOGIN"
-              />
-              <ToastContainer
-                autoClose={5000}
-                bodyClassName={null}
-                className={null}
-                closeButton={
-                  <CloseButton
-                    ariaLabel="close"
-                  />
-                }
-                closeOnClick={true}
-                draggable={true}
-                draggablePercent={80}
-                hideProgressBar={false}
-                newestOnTop={false}
-                pauseOnFocusLoss={true}
-                pauseOnHover={true}
-                position="top-right"
-                progressClassName={null}
-                progressStyle={null}
-                rtl={false}
-                style={null}
-                toastClassName={null}
-                transition={[Function]}
               />
             </div>
           </form>

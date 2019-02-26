@@ -9,7 +9,7 @@ import '../assets/css/style.css';
 import Footer from './layouts/Footer';
 import Spinner from '../common/Spinner';
 
-class Admin extends Component {
+export class Admin extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
@@ -53,7 +53,7 @@ render() {
                   <p className="product-name">{item.name}</p>
                   <p className="product-price">
 #
-                    {item.price.toLocaleString()}
+                    {item.price}
                   </p>
                   <p>
                     <button className="editBtn"><Link to={`edit-product?id=${item.id}`}>Edit</Link></button>

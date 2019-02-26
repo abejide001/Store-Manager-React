@@ -23,15 +23,6 @@ export class Login extends Component {
     },
   }
 
-  componentWillReceiveProps(propsNext) {
-    if (propsNext.auth.user.userId === 'admin') {
-      this.props.history.push('/admin');
-    }
-    if (propsNext.auth.user.userId === 'attendant') {
-      this.props.history.push('/attendant');
-    }
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
     const user = {
