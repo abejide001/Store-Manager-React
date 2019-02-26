@@ -12,7 +12,7 @@ export const setProductError = error => ({
 });
 // eslint-disable-next-line import/prefer-default-export
 export const getProducts = () => (dispatch) => {
-  axios.get(`${basePath}/products`)
+  return axios.get(`${basePath}/products`)
     .then((res) => {
       dispatch({
         type: GET_PRODUCTS,
@@ -20,12 +20,11 @@ export const getProducts = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      dispatch(setProductError(err.response.data.message));
       Notify.notifyError(err.response.data.message);
     });
 };
 export const deleteProduct = id => (dispatch) => {
-  axios.delete(`${basePath}/products/${id}`)
+  return axios.delete(`${basePath}/products/${id}`)
     .then(() => {
       window.location.reload();
       dispatch({
@@ -41,7 +40,7 @@ export const deleteProduct = id => (dispatch) => {
     });
 };
 export const editProduct = (id, productData) => (dispatch) => {
-  axios.put(`${basePath}/products/${id}`, productData)
+  return axios.put(`${basePath}/products/${id}`, productData)
     .then((res) => {
       window.location.replace('/admin');
       dispatch({
@@ -50,7 +49,6 @@ export const editProduct = (id, productData) => (dispatch) => {
       });
     })
     .catch((err) => {
-      dispatch(setProducterror(err.response.data.message));
       Notify.notifyError(err.response.data.message);
     });
 };

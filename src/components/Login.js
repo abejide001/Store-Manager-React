@@ -15,21 +15,12 @@ import logo from '../assets/images/logo.png';
 import Footer from './layouts/Footer';
 import { loginUser } from '../actions/authActions';
 
-class Login extends Component {
+export class Login extends Component {
   state = {
     data: {
       email: '',
       password: '',
     },
-  }
-
-  componentWillReceiveProps(propsNext) {
-    if (propsNext.auth.user.userId === 'admin') {
-      this.props.history.push('/admin');
-    }
-    if (propsNext.auth.user.userId === 'attendant') {
-      this.props.history.push('/attendant');
-    }
   }
 
   handleSubmit = (e) => {
