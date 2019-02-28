@@ -33,7 +33,7 @@ render() {
                 <Link to="/sale-records">Records</Link>
               </li>
               <li>
-                <Link to="/create-product">Create Product</Link>
+                <Link to="/add-product">Create Product</Link>
               </li>
               <li>
                 <Link to="/available-products.html">Available Products</Link>

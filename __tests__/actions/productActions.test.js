@@ -3,7 +3,12 @@ import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import * as actionTypes from '../../src/actions/types';
-import { getProducts, deleteProduct, editProduct, setProductError } from '../../src/actions/productActions';
+import {
+  getProducts,
+  deleteProduct,
+  editProduct,
+  addProducts,
+} from '../../src/actions/productActions';
 
 describe('Product action', () => {
   const mockStore = configureStore([thunk]);
@@ -76,6 +81,52 @@ describe('Product action', () => {
     return store.dispatch(deleteProduct())
       .then(() => {
         expect(store.getActions()[0].type).toEqual(expectedActions.type);
+        done();
+      });
+  });
+  it(`dispatches ADD_PRODUCT_REQUEST and
+  ADD_PRODUCT_SUCCESS when adding a product`, (done) => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: product.products,
+      });
+    });
+    const expectedActions = [{
+      type: actionTypes.ADD_PRODUCT_REQUEST,
+    }, {
+      type: actionTypes.ADD_PRODUCT_SUCCESS,
+      products: product.products,
+    },
+    ];
+    const store = mockStore({});
+    return store.dispatch(addProducts())
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+        done();
+      });
+  });
+  it(`dispatches ADD_PRODUCT_REQUEST and
+  ADD_PRODUCT_ERROR when adding a product`, (done) => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: 'error',
+      });
+    });
+    const expectedActions = [{
+      type: actionTypes.ADD_PRODUCT_REQUEST,
+    }, {
+      type: actionTypes.ADD_PRODUCT_FAILURE,
+      payload: 'error',
+    },
+    ];
+    const store = mockStore({});
+    return store.dispatch(addProducts())
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
         done();
       });
   });

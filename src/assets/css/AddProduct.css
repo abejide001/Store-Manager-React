@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=K2D");
+#create-product {
+  min-height: 510px;
+  font-family: "K2D", sans-serif;
+}
+
+#create-product h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.submission-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 5px;
+  margin-bottom: 100px;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  border: 3px solid gray;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#sendBtn {
+  border: 0;
+  background: linear-gradient(to left top, blue, gray);
+  padding: 10px;
+  color: white;
+  margin: 1rem 10px;
+  width: auto;
+  cursor: pointer;
+}
