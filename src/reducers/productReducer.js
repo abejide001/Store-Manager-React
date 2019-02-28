@@ -1,4 +1,12 @@
-import { GET_PRODUCTS, EDIT_PRODUCT, DELETE_PRODUCT, GET_PRODUCT_ERROR } from '../actions/types';
+import {
+  GET_PRODUCTS,
+  EDIT_PRODUCT,
+  DELETE_PRODUCT,
+  GET_PRODUCT_ERROR,
+  ADD_PRODUCT_FAILURE,
+  ADD_PRODUCT_REQUEST,
+  ADD_PRODUCT_SUCCESS,
+} from '../actions/types';
 
 const initialState = {
   loading: false,
@@ -28,6 +36,22 @@ export default function (state = initialState, action) {
       return {
         ...state,
         error: action.payload,
+      };
+    case ADD_PRODUCT_REQUEST:
+      return {
+        ...state,
+        isAdding: true,
+      };
+    case ADD_PRODUCT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isAdding: false,
+      };
+    case ADD_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isAdding: false,
       };
     default:
       return state;
