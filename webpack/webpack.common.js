@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   module: {
     rules: [
       {
@@ -31,9 +31,4 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-    historyApiFallback: true,
-  },
 };
