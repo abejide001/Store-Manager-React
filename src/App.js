@@ -16,6 +16,7 @@ import Private from './common/Private';
 import EditProduct from './components/EditProduct';
 import AddProduct from './components/AddProduct';
 import Register from './components/Register';
+import SalesRecord from './components/SalesRecord';
 
 if (localStorage.authToken) {
   setAuthToken(localStorage.authToken);
@@ -34,6 +35,7 @@ export default class App extends Component {
             <Private exact path="/edit-product" component={EditProduct} />
             <Private exact path="/add-product" component={AddProduct} />
             <Private exact path="/register" component={Register} />
+            <Private exact path="/sale-records" component={SalesRecord} />
           </Switch>
         </Provider>
       </div>
