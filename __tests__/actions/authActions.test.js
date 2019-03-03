@@ -1,16 +1,77 @@
 /* eslint-disable no-undef */
-import { loginUser, setCurrentUser } from '../../src/actions/authActions';
-import { SET_CURRENT_USER } from '../../src/actions/types';
+import configureStore from 'redux-mock-store';
+import moxios from 'moxios';
+import thunk from 'redux-thunk';
+import * as actionTypes from '../../src/actions/types';
+import { loginUser } from '../../src/actions/authActions';
 
-describe('Test Auth Actions', () => {
-  it('should return an action', () => {
-    const action = loginUser();
-    expect(action).toBeDefined();
+describe('Login actions', () => {
+  const mockStore = configureStore([thunk]);
+  beforeEach(() => {
+    moxios.install();
   });
-  it('should return an action with SET_CURRENT_USER', () => {
-    const action = setCurrentUser();
-    expect(action).toEqual({ type: SET_CURRENT_USER });
-    expect(action.payload).toBeUndefined();
-    expect(action).toBeDefined();
+  afterEach(() => {
+    moxios.uninstall();
   });
+
+  it(
+    `dispatches LOGGING_IN action and LOGIN_SUCCESS action and 
+    redirests to index page on logging in user`,
+    (done) => {
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        request.respondWith({
+          status: 200,
+          response: {
+            userId: 'user',
+          },
+        });
+      });
+      const expectedActions = [{
+        type: actionTypes.SET_USER_REQUEST,
+      }, {
+        type: actionTypes.GET_USER_ERROR,
+      }];
+      const store = mockStore({});
+      return store.dispatch(loginUser({
+        email: 'user@gmail.com',
+        password: 'adsdsfsfsf',
+      }))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+          done();
+        });
+    },
+  );
+
+  it(
+    'dispatches LOGGING_IN action and LOGIN_FAILURE on login failure',
+    (done) => {
+      const response = {
+        data: {
+          message: 'vadddd',
+        },
+      };
+      moxios.wait(() => {
+        const request = moxios.requests.mostRecent();
+        request.respondWith({
+          status: 400,
+          response: response.data.message,
+        });
+      });
+      const expectedActions = [{
+        type: actionTypes.SET_USER_REQUEST,
+      },
+      {
+        type: actionTypes.GET_USER_ERROR,
+      },
+      ];
+      const store = mockStore({});
+      return store.dispatch(loginUser({ email: 'ababab@yahoo.com', password: 'kamama' }))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+          done();
+        });
+    },
+  );
 });
