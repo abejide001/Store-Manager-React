@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D");
+/* records */
+.sale-body {
+  position: absolute;
+  width: 100%;
+  top:0;
+  bottom: 0;
+}
+.sale-showcase {
+  display:  flex;
+  flex-direction: column;
+  height: 100%;
+}
+#records {
+  min-height: 510px;
+  flex: 1;
+}
+#record-table {
+  overflow-x: auto;
+}
+#record-title h1 {
+  text-align: center;
+  font: normal bold 45px "K2D", sans-serif;
+}
+
+table {
+  text-align: center;
+  width: 900px;
+  margin: auto;
+  /* table-layout: fixed; */
+  overflow-x: auto;  
+}
+
+table,
+tr,
+th,
+td {
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  font: normal 21px "K2D", sans-serif;
+  border-collapse: collapse;
+}
+
+td:hover {
+  background-color: gray;
+  cursor: pointer;
+}
