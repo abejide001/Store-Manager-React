@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
 import '../assets/css/Login.css';
+import '../assets/css/style.css';
 import logo from '../assets/images/logo.png';
 import Footer from './layouts/Footer';
 import { loginUser } from '../actions/authActions';
@@ -55,18 +56,18 @@ render() {
           </header>
           <section id="login-area">
             <div className="container">
-              <form className="login-form" onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <div className="login-box">
                   <h1>Login</h1>
                   <div className="login-textbox">
                     <i className="fas fa-envelope" />
-                    <input type="email" placeholder="Email" id="email" name="email" onChange={this.handleChange} value={email} required />
+                    <input type="email" placeholder="Email" name="email" onChange={this.handleChange} value={email} required />
                   </div>
                   <div className="login-textbox">
                     <i className="fas fa-key" aria-hidden="true" />
-                    <input type="password" placeholder="Password" id="password" name="password" onChange={this.handleChange} value={password} required />
+                    <input type="password" placeholder="Password" name="password" onChange={this.handleChange} value={password} required />
                   </div>
-                  <input type="submit" value="LOGIN" className="btn" />
+                  <button type="submit" className="btn">{this.props.auth.isLogging ? 'LOGGING IN...' : 'LOGIN'}</button>
                 </div>
               </form>
             </div>
