@@ -15,6 +15,7 @@ import Admin from './components/AdminPage';
 import Private from './common/Private';
 import EditProduct from './components/EditProduct';
 import AddProduct from './components/AddProduct';
+import Register from './components/Register';
 
 if (localStorage.authToken) {
   setAuthToken(localStorage.authToken);
@@ -32,6 +33,7 @@ export default class App extends Component {
             <Private exact path="/admin" component={Admin} />
             <Private exact path="/edit-product" component={EditProduct} />
             <Private exact path="/add-product" component={AddProduct} />
+            <Private exact path="/register" component={Register} />
           </Switch>
         </Provider>
       </div>

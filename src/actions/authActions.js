@@ -39,6 +39,21 @@ export const loginUser = userData => (dispatch) => {
       Notify.notifyError('Bad');
     });
 };
+
+export const registerUser = userData => (dispatch) => {
+  dispatch(setUserRequest());
+  return axios.post(`${basePath}/auth/signup`, userData)
+    .then((res) => {
+      if (res.data.role === 'user') {
+        window.location.replace('/login');
+        localStorage.clear();
+      }
+    })
+    .catch((err) => {
+      dispatch(setUserError());
+      Notify.notifyError(err.response.data.message);
+    });
+};
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('authToken');
   setAuthToken(false);
