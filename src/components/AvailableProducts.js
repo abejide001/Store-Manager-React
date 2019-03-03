@@ -9,7 +9,7 @@ import '../assets/css/style.css';
 import Footer from './layouts/Footer';
 import Spinner from '../common/Spinner';
 
-export class Admin extends Component {
+export class AvailableProduct extends Component {
   componentWillMount() {
     this.props.getProducts();
   }
@@ -70,4 +70,4 @@ const mapStateToProps = state => ({
   product: state.product,
   error: state.error,
 });
-export default connect(mapStateToProps, { getProducts })(Admin);
+export default connect(mapStateToProps, { getProducts })(AvailableProduct);
