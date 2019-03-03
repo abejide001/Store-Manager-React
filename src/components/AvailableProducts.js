@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getProducts, deleteProduct } from '../actions/productActions';
+import { getProducts } from '../actions/productActions';
 import logo from '../assets/images/logo.png';
-import '../assets/css/Admin.css';
+import '../assets/css/AvailableProducts.css';
 import '../assets/css/style.css';
 import Footer from './layouts/Footer';
 import Spinner from '../common/Spinner';
@@ -14,13 +14,9 @@ export class Admin extends Component {
     this.props.getProducts();
   }
 
-handleDelete = (id) => {
-  this.props.deleteProduct(id);
-}
-
-render() {
-  const { products } = this.props.product.products;
-  return (
+  render() {
+    const { products } = this.props.product.products;
+    return (
     <div>
       <header>
         <div className="container">
@@ -36,7 +32,7 @@ render() {
                 <Link to="/add-product">Create Product</Link>
               </li>
               <li>
-                <Link to="/available-products">Available Products</Link>
+                <Link to="/available-products.html">Available Products</Link>
               </li>
             </ul>
           </nav>
@@ -44,7 +40,7 @@ render() {
       </header>
       <section id="product-area">
         <div className="container">
-          <h1 id="product-header">Products</h1>
+          <h1 id="product-header">Available Products</h1>
           <div className="products">
             {products === undefined ? <Spinner />
               : products.value.map(item => (
@@ -56,9 +52,8 @@ render() {
                     {item.price}
                   </p>
                   <p>
-                    <button className="editBtn"><Link to={`edit-product?id=${item.id}`}>Edit</Link></button>
                     {' '}
-                    <button className="deleteBtn" type="submit" onClick={() => this.handleDelete(item.id)}>Delete</button>
+                    <button className="modalBtn" type="submit">Details</button>
                   </p>
                 </div>
               ))}
@@ -75,4 +70,4 @@ const mapStateToProps = state => ({
   product: state.product,
   error: state.error,
 });
-export default connect(mapStateToProps, { getProducts, deleteProduct })(Admin);
+export default connect(mapStateToProps, { getProducts })(Admin);
