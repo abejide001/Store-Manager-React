@@ -28,7 +28,7 @@
   margin-bottom: 100px;
 }
 
-input {
+.submission-form input {
   display: block;
   width: 100%;
   border: 2px solid gray;

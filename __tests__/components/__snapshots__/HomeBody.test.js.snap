@@ -19,5 +19,6 @@ exports[`<HomeBody /> render() renders the component 1`] = `
       </p>
     </div>
   </section>
+  <Footer />
 </div>
 `;
