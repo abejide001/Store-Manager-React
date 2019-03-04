@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css?family=Charmonman|Roboto|K2D");
+/* product area */
+
+#product-area {
+  min-height: 600px;
+  font-family: "K2D", sans-serif;
+}
+
+#product-area h2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.product {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  border: 1px solid gray;
+}
+
+.product-image {
+  height: 150px;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.product-name,
+.product-price {
+  font-weight: bold;
+}
+
+.product-image:hover {
+  transform: scale(1.2);
+}
+
+.product-button {
+  background: gray;
+  padding: 1rem 2rem;
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cart-section {
+  min-height: 300px;
+}
+
+#cart-title {
+  text-align: center;
+  font-size: 40px;
+  font-family: "K2D", sans-serif;
+}
+
+/* cart area */
+
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.cart-column {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+  margin: 10px 1.5em 0px 0px;
+  padding-bottom: 10px;
+  font-family: "K2D", sans-serif;
+}
+
+.cart-row {
+  display: flex;
+}
+
+.cart-item {
+  width: 45%;
+}
+
+.cart-price {
+  width: 20%;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-quantity {
+  width: 35%;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.btn-danger {
+  height: 30px;
+  background: red;
+  padding: 5px;
+  margin: 12px 0px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  color: white;
+  font-family: "K2D", sans-serif;
+}
+
+.cart-quantity-input {
+  height: 34px;
+  width: 50px;
+  border-radius: 5px;
+  border: 1px solid #56ccf2;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+
+.cart-row:last-child {
+  border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+  border: none;
+}
+
+.cart-total {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.cart-total-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: "K2D", sans-serif;
+  color: black;
+  margin-right: 20px;
+}
+
+.cart-total-price {
+  color: #333;
+  font-size: 20px;
+  font-family: "K2D", sans-serif;
+}
+
+.purchase-button {
+  display: block;
+  margin: 40px auto 80px auto;
+  background: gray;
+  /* height: 30px; */
+  padding: 1rem 2rem;
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+
+
+input[type=search] {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+
+
+@media (max-width: 348px) {
+  .products .product {
+    float: none;
+    width: 100%;
+    border: none;
+  }
+  .cart-section {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .cart-row {
+    overflow: auto;
+  }
+}
+@media (max-width: 898px) {
+  .product {
+    float: none;
+    width: 100%;
+    border: none;
+  }
+  header #header-title,
+    header nav,
+    header nav li {
+      float: none;
+      width: 100%;
+      text-align: center;
+    }
+    header a {
+      text-align: center;
+      font-size: 17px;
+    }
+}

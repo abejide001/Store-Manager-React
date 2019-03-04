@@ -9,7 +9,7 @@
     "start": "node server.js",
     "start:dev": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
     "build": "webpack --config ./webpack/webpack.prod.js",
-    "coverage": "npm run test -- --coverage",
+    "coverage": "npm run test -- --coverage --verbose",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "heroku-prebuild": "npm run-script install",
     "heroku-postbuild": "npm run-script build"

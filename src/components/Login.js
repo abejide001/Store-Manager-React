@@ -51,6 +51,7 @@ render() {
                 <Link to="/">
                   <img src={logo} alt="logo" />
                 </Link>
+                {localStorage.getItem('authToken') ? this.props.history.push('/') : null}
               </div>
             </div>
           </header>
