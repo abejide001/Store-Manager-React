@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { addProducts } from '../actions/productActions';
 import logo from '../assets/images/logo.png';
 import '../assets/css/AddProduct.css';
+import Footer from './layouts/Footer';
 
 export class AddProduct extends Component {
   state = {
@@ -93,6 +94,7 @@ export class AddProduct extends Component {
             <input type="submit" value="CREATE PRODUCT" id="sendBtn" />
           </form>
         </section>
+        <Footer />
       </div>
     );
   }

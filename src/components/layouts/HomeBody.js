@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import '../../assets/css/style.css';
 import Header from './Header';
+import Footer from './Footer';
 
 export default function HomeBody() {
   return (
@@ -16,6 +17,7 @@ Manage your sales and product inventory records.
           </p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

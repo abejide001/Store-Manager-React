@@ -3,6 +3,5 @@
 exports[`<Home /> render() renders the component 1`] = `
 <div>
   <HomeBody />
-  <Footer />
 </div>
 `;

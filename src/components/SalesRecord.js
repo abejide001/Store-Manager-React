@@ -37,22 +37,29 @@ class SalesRecord extends Component {
               <div id="record-title">
                 <h1>Attendants Sale Records</h1>
               </div>
-              {this.props.sale.sales.sales === undefined
-                ? 'Sales Loading....'
-                : this.props.sale.sales.sales.value.map(sale => (
-                  <div id="record-table">
-                    <table id="myTable">
-                      <tr>
-                        <td>{sale.id}</td>
-                        <td>{sale.product_name}</td>
-                        <td>
-#
-                          {sale.quantity_sold}
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                ))}
+              <div id="record-table">
+                <table id="myTable">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Product Name</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  {this.props.sale.sales.sales === undefined
+                    ? 'Sales Loading....'
+                    : this.props.sale.sales.sales.value.map(sale => (
+                          <tr>
+                            <td>{sale.id}</td>
+                            <td>{sale.product_name}</td>
+                            <td>
+    #
+                              {sale.quantity_sold}
+                            </td>
+                          </tr>
+                    ))}
+                </table>
+              </div>
             </div>
           </section>
           <Footer />
