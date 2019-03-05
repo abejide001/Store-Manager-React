@@ -19,6 +19,7 @@ import Register from './components/Register';
 import SalesRecord from './components/SalesRecord';
 import AvailableProducts from './components/AvailableProducts';
 import AttendantPage from './components/AttendantPage';
+import NotFound from './components/NotFound';
 
 if (localStorage.authToken) {
   setAuthToken(localStorage.authToken);
@@ -30,9 +31,9 @@ export default class App extends Component {
     return (
       <div>
         <Provider store={store}>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
           <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
             <Private exact path="/admin" component={Admin} />
             <Private exact path="/edit-product" component={EditProduct} />
             <Private exact path="/add-product" component={AddProduct} />
@@ -40,6 +41,7 @@ export default class App extends Component {
             <Private exact path="/sale-records" component={SalesRecord} />
             <Private exact path="/available-products" component={AvailableProducts} />
             <Private exact path="/attendant" component={AttendantPage} />
+            <Route component={NotFound} />
           </Switch>
         </Provider>
       </div>
