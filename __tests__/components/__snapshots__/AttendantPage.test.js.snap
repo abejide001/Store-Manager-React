@@ -39,9 +39,11 @@ exports[`Snapshot should match snapshot 1`] = `
           </li>
           <li>
             <input
-              id="search"
+              name="search"
+              onChange={[Function]}
               placeholder="Search Product"
               type="search"
+              value=""
             />
           </li>
         </ul>
@@ -59,54 +61,7 @@ exports[`Snapshot should match snapshot 1`] = `
       </h2>
       <div
         className="products"
-      >
-        <div
-          className="product-item"
-        >
-          <img
-            className="product-image"
-          />
-          <p
-            className="product-name"
-          />
-          <p
-            className="product-price"
-          >
-            #
-          </p>
-          <p>
-            <button
-              className="product-button"
-              type="button"
-            >
-              ADD TO CART
-            </button>
-          </p>
-        </div>
-        <div
-          className="product-item"
-        >
-          <img
-            className="product-image"
-          />
-          <p
-            className="product-name"
-          />
-          <p
-            className="product-price"
-          >
-            #
-          </p>
-          <p>
-            <button
-              className="product-button"
-              type="button"
-            >
-              ADD TO CART
-            </button>
-          </p>
-        </div>
-      </div>
+      />
     </div>
   </section>
   <section
