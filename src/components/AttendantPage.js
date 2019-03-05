@@ -9,12 +9,26 @@ import '../assets/css/style.css';
 import Spinner from '../common/Spinner';
 
 export class AttendantPage extends Component {
+  state = {
+    search: '',
+  };
+
   componentDidMount() {
     this.props.getProducts();
   }
 
+  handleChange = (e) => {
+    this.setState({ search: e.target.value });
+  };
+
   render() {
     const { products } = this.props.product.products;
+    const { search } = this.state;
+    const foundProducts = products
+      && products.value.filter(
+        product => product.name.toLowerCase().includes(search.toLowerCase()),
+      );
+
     return (
       <div>
         <header>
@@ -36,7 +50,9 @@ export class AttendantPage extends Component {
                   <input
                     type="search"
                     placeholder="Search Product"
-                    id="search"
+                    value={search}
+                    name="search"
+                    onChange={this.handleChange}
                   />
                 </li>
               </ul>
@@ -47,20 +63,25 @@ export class AttendantPage extends Component {
           <div className="container">
             <h2>Products</h2>
             <div className="products">
-              {products === undefined ? <Spinner />
-                : products.value.map(item => (
-                <div className="product-item" key={item.id}>
-                  <img src={item.product_image} className="product-image" />
-                  <p className="product-name">{item.name}</p>
-                  <p className="product-price">
+              {foundProducts === undefined ? (
+                <Spinner />
+              ) : (
+                foundProducts.map(item => (
+                  <div className="product-item" key={item.id}>
+                    <img src={item.product_image} className="product-image" />
+                    <p className="product-name">{item.name}</p>
+                    <p className="product-price">
 #
-                    {item.price}
-                  </p>
-                  <p>
-                    <button className="product-button" type="button">ADD TO CART</button>
-                  </p>
-                </div>
-                ))}
+                      {(item.price).toLocaleString()}
+                                        </p>
+                    <p>
+                      <button className="product-button" type="button">
+                        ADD TO CART
+                      </button>
+                    </p>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </section>
@@ -92,4 +113,7 @@ export class AttendantPage extends Component {
 const mapStateToProps = state => ({
   product: state.product,
 });
-export default connect(mapStateToProps, { getProducts })(AttendantPage);
+export default connect(
+  mapStateToProps,
+  { getProducts },
+)(AttendantPage);
