@@ -1,5 +1,8 @@
 const props = {
   getProducts: () => null,
+  auth: {
+    user: jest.fn()
+  },
   product: {
     products: {
       products: {

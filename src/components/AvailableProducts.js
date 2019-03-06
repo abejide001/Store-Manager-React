@@ -17,7 +17,7 @@ export class AvailableProduct extends Component {
   render() {
     const { products } = this.props.product.products;
     return (
-    <div>
+      <div>
       <header>
         <div className="container">
           <div id="header-title">
@@ -25,15 +25,25 @@ export class AvailableProduct extends Component {
           </div>
           <nav>
             <ul>
+              {this.props.auth.user.userId === 'admin' ? (
               <li>
-                <Link to="/sale-records">Records</Link>
-              </li>
-              <li>
-                <Link to="/add-product">Create Product</Link>
-              </li>
-              <li>
-                <Link to="/available-products.html">Available Products</Link>
-              </li>
+                  <Link to="/sale-records">Record</Link>
+                </li>
+              ) : null}
+              {this.props.auth.user.userId === 'admin' ? (
+                <li>
+                  <Link to="/add-product">Create Product</Link>
+                </li>
+              ) : null}
+              {this.props.auth.user.userId === 'admin' ? (
+                <li>
+                  <Link to="/admin">Admin</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/attendant">Attendant</Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>
@@ -62,12 +72,13 @@ export class AvailableProduct extends Component {
       </section>
       <Footer />
     </div>
-  );
-}
+    );
+  }
 }
 
 const mapStateToProps = state => ({
   product: state.product,
   error: state.error,
+  auth: state.auth,
 });
 export default connect(mapStateToProps, { getProducts })(AvailableProduct);
