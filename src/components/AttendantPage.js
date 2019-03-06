@@ -33,6 +33,7 @@ export class AttendantPage extends Component {
       <div>
         <header>
           <div className="container">
+          {this.props.auth.user.userId === 'admin' ? this.props.history.push('/admin') : null}
             <div id="header-title">
               <Link to="/">
                 <img src={logo} alt="logo" />
@@ -112,6 +113,7 @@ export class AttendantPage extends Component {
 }
 const mapStateToProps = state => ({
   product: state.product,
+  auth: state.auth,
 });
 export default connect(
   mapStateToProps,

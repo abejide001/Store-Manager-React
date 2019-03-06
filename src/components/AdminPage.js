@@ -25,6 +25,7 @@ render() {
       <header>
         <div className="container">
           <div id="header-title">
+           {this.props.auth.user.userId === 'user' ? this.props.history.push('/attendant') : null}
             <Link to="/"><img src={logo} alt="logo" /></Link>
           </div>
           <nav>
@@ -74,5 +75,6 @@ render() {
 const mapStateToProps = state => ({
   product: state.product,
   error: state.error,
+  auth: state.auth,
 });
 export default connect(mapStateToProps, { getProducts, deleteProduct })(Admin);

@@ -44,7 +44,11 @@ describe('Mount methods', () => {
       const props = {
         getProducts: jest.fn(),
         deleteProduct: jest.fn(),
-        auth: jest.mock(),
+        auth: {
+          user: {
+            userId: 'sfsdfdfdfdf'
+          }
+        },
         product: {
           products: {
             products: {
