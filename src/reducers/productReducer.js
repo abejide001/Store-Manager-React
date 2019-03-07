@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {
   GET_PRODUCTS,
   EDIT_PRODUCT,
@@ -6,12 +7,21 @@ import {
   ADD_PRODUCT_FAILURE,
   ADD_PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
+  ADD_TO_CART,
+  DELETE_CART_PRODUCT,
 } from '../actions/types';
 
+let newCart = [];
+
+if (localStorage.getItem('userCart')) {
+  const cart = JSON.parse(localStorage.getItem('userCart'));
+  newCart = [...cart];
+}
 const initialState = {
   loading: false,
   products: [],
   product: {},
+  cart: newCart,
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -52,6 +62,31 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAdding: false,
+      };
+    case ADD_TO_CART:
+      newCart = state.cart;
+      if (!newCart.find(o => o.id === action.payload.id)) {
+        action.payload.cartQty = 1;
+        newCart.push(action.payload);
+      } else {
+        const position = newCart.findIndex(elem => (elem.id === action.payload.id));
+
+        if (newCart[position].quantity > 0) {
+          newCart[position].cartQty += 1;
+          newCart[position].quantity -= 1;
+        }
+      }
+      localStorage.setItem('userCart', JSON.stringify(newCart));
+
+      return {
+        ...state,
+        cart: newCart,
+      };
+    case DELETE_CART_PRODUCT:
+      localStorage.setItem('userCart', JSON.stringify(action.payload));
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;

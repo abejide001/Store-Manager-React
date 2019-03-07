@@ -1,4 +1,4 @@
-const productData = {
+export const productData = {
   products: [{
     id: 3,
     name: 'air max',
@@ -15,4 +15,8 @@ const productData = {
   },
   ],
 };
-export default productData;
+export const salesData = {
+  sales: {
+    value: { id: 1, product_name: 'laptop', quantity_sold: 10 },
+  },
+};

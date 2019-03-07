@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot should match snapshot 1`] = `
+exports[`Attendant component should match snapshot 1`] = `
 <div>
   <header>
     <div
@@ -107,12 +107,12 @@ exports[`Snapshot should match snapshot 1`] = `
         </strong>
         <span
           className="cart-total-price"
-        >
-          #0
-        </span>
+        />
       </div>
       <button
         className="purchase-button"
+        disabled="disabled"
+        onClick={[Function]}
         type="button"
       >
         PURCHASE
