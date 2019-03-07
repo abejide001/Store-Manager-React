@@ -8,6 +8,8 @@ import {
   deleteProduct,
   editProduct,
   addProducts,
+  addToCart,
+  cartUpdatedAfterDelete,
 } from '../../src/actions/productActions';
 
 describe('Product action', () => {
@@ -83,6 +85,56 @@ describe('Product action', () => {
         expect(store.getActions()[0].type).toEqual(expectedActions.type);
         done();
       });
+  });
+  it('should dispatch GET PRODUCT ERROR', (done) => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          status: 'error',
+          message: 'product not found',
+        },
+      });
+    });
+    const expectedActions = {
+      type: actionTypes.GET_PRODUCT_ERROR,
+      payload: {
+        status: 'error',
+        message: 'product not found',
+      },
+    };
+    const store = mockStore({});
+    return store.dispatch(deleteProduct())
+      .then(() => {
+        expect(store.getActions()[0].type).toEqual(expectedActions.type);
+        done();
+      });
+  });
+  it('should dispatch ADD_TO_CART', () => {
+    const expectedActions = {
+      type: actionTypes.ADD_TO_CART,
+      payload: {
+        id: 38,
+        name: 'Air Vapor',
+        price: 20000,
+        quantity_in_inventory: 3,
+        product_image: 'https://i.imgur.com/IQRaNLr.jpg',
+        cartQty: 1,
+      },
+    };
+    const store = mockStore({});
+    store.dispatch(addToCart());
+    expect(store.getActions()[0].type).toEqual(expectedActions.type);
+  });
+  it('should dispatch DELETE CART', () => {
+    const expectedActions = {
+      type: actionTypes.DELETE_CART_PRODUCT,
+      payload: [],
+    };
+    const store = mockStore({});
+    store.dispatch(cartUpdatedAfterDelete());
+    expect(store.getActions()[0].type).toEqual(expectedActions.type);
   });
   it(`dispatches ADD_PRODUCT_REQUEST and
   ADD_PRODUCT_SUCCESS when adding a product`, (done) => {

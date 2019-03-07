@@ -21,7 +21,7 @@ export const setCurrentUser = decoded => ({
 
 const setUserError = error => ({
   type: GET_USER_ERROR,
-  error,
+  payload: error,
 });
 export const loginUser = userData => (dispatch) => {
   dispatch(setUserRequest());
@@ -35,8 +35,8 @@ export const loginUser = userData => (dispatch) => {
       decoded.userId === 'admin' ? window.location.replace('/admin') : window.location.replace('/attendant');
     })
     .catch((err) => {
-      dispatch(setUserError());
-      Notify.notifyError('Bad');
+      dispatch(setUserError(err.response.data.message));
+      Notify.notifyError('ERROR', err.response.data.message);
     });
 };
 
@@ -50,8 +50,8 @@ export const registerUser = userData => (dispatch) => {
       }
     })
     .catch((err) => {
-      dispatch(setUserError());
-      Notify.notifyError(err.response.data.message);
+      dispatch(setUserError(err.response.data.message));
+      Notify.notifyError('ERROR', err.response.data.message);
     });
 };
 export const logoutUser = () => (dispatch) => {

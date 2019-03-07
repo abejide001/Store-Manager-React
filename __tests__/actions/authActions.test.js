@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import * as actionTypes from '../../src/actions/types';
-import { loginUser } from '../../src/actions/authActions';
+import { loginUser, logoutUser, registerUser } from '../../src/actions/authActions';
 
 describe('Login actions', () => {
   const mockStore = configureStore([thunk]);
@@ -21,10 +21,8 @@ describe('Login actions', () => {
       moxios.wait(() => {
         const request = moxios.requests.mostRecent();
         request.respondWith({
-          status: 200,
-          response: {
-            userId: 'user',
-          },
+          status: 400,
+          response: 'error',
         });
       });
       const expectedActions = [{
@@ -33,9 +31,12 @@ describe('Login actions', () => {
         type: actionTypes.GET_USER_ERROR,
       }];
       const store = mockStore({});
-      return store.dispatch(loginUser({
-        email: 'user@gmail.com',
-        password: 'adsdsfsfsf',
+      return store.dispatch(registerUser({
+        fullname: 'sfdfdg',
+        username: 'sfdfdfgdg',
+        role: 'attendant',
+        email: 'abejidefemi@gmail.com',
+        password: 'abcde',
       }))
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -74,4 +75,39 @@ describe('Login actions', () => {
         });
     },
   );
+  it('should dispatch USER REQUEST and USER ERROR', (done) => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          message: 'The credentials you provided is incorrect',
+        },
+      });
+    });
+    const expectedActions = [
+      {
+        type: actionTypes.SET_USER_REQUEST,
+      },
+      {
+        type: actionTypes.GET_USER_ERROR,
+          payload: 'The credentials you provided is incorrect',
+      }];
+    const store = mockStore({});
+    return store.dispatch(loginUser({ email: 'ababababab@yahoo.com', password: 'sfdsfdfd' }))
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+        done();
+      });
+  });
+  it('should dispatch LOGOUT', () => {
+    const expectedActions = [
+      {
+        type: actionTypes.SET_CURRENT_USER,
+        payload: {},
+      }];
+    const store = mockStore({});
+    store.dispatch(logoutUser({}))
+        expect(store.getActions()).toEqual(expectedActions);
+  });
 });

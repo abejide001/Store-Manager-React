@@ -8,8 +8,9 @@ import {
   ADD_PRODUCT_FAILURE,
   ADD_PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
+  ADD_TO_CART,
 } from '../../src/actions/types';
-import productData from '../components/mockData';
+import { productData } from '../components/mockData';
 
 describe('Product Reducer', () => {
   it('should handle action handle action of type GET_PRODUCTS', () => {

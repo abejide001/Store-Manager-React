@@ -1,39 +1,72 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getProducts } from '../actions/productActions';
+import { getProducts, addToCart, removeFromCart } from '../actions/productActions';
 import Footer from './layouts/Footer';
 import logo from '../assets/images/logo.png';
 import '../assets/css/AttendantPage.css';
 import '../assets/css/style.css';
 import Spinner from '../common/Spinner';
+import Notify from '../utils/Notify';
 
 export class AttendantPage extends Component {
   state = {
     search: '',
+    carts: [],
   };
 
   componentDidMount() {
     this.props.getProducts();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.product.cart) {
+      this.setState({ carts: nextProps.product.cart });
+    }
+  }
+
   handleChange = (e) => {
     this.setState({ search: e.target.value });
   };
 
+  handleCartClick = (product) => {
+    this.props.addToCart(product);
+  };
+
+  handlePurchase = () => {
+    localStorage.removeItem('userCart');
+    Notify.notifySuccess('Purchased');
+  }
+
+  handleCartDelete = (id) => {
+    const { carts } = this.state;
+    const cart = carts.splice(0);
+    const position = cart.filter(elem => (elem.id === id));
+    cart.splice(position, 1);
+    this.setState({ carts: cart });
+    this.props.removeFromCart(cart);
+  };
+
   render() {
     const { products } = this.props.product.products;
+    const { carts } = this.state;
     const { search } = this.state;
     const foundProducts = products
       && products.value.filter(
         product => product.name.toLowerCase().includes(search.toLowerCase()),
       );
-
+    const styles = {
+      width: '100px',
+      height: '100px',
+    };
     return (
       <div>
         <header>
           <div className="container">
-          {this.props.auth.user.userId === 'admin' ? this.props.history.push('/admin') : null}
+            {this.props.auth.user.userId === 'admin'
+              ? this.props.history.push('/admin')
+              : null}
             <div id="header-title">
               <Link to="/">
                 <img src={logo} alt="logo" />
@@ -72,11 +105,15 @@ export class AttendantPage extends Component {
                     <img src={item.product_image} className="product-image" />
                     <p className="product-name">{item.name}</p>
                     <p className="product-price">
-#
-                      {(item.price).toLocaleString()}
-                                        </p>
+                      #
+                      {item.price.toLocaleString()}
+                    </p>
                     <p>
-                      <button className="product-button" type="button">
+                      <button
+                        className="product-button"
+                        type="button"
+                        onClick={() => this.handleCartClick(item)}
+                      >
                         ADD TO CART
                       </button>
                     </p>
@@ -96,12 +133,38 @@ export class AttendantPage extends Component {
                 QUANTITY
               </span>
             </div>
-            <div className="cart-items" />
+            <div className="cart-items">
+              {carts.map(item => (
+                <div className="cart-row">
+                  <div className="cart-item cart-column">
+                    <img
+                      className="cart-item-image"
+                      src={item.product_image}
+                      alt="product"
+                      style={styles}
+                    />
+                    <span className="cart-item-title">{item.name}</span>
+                  </div>
+                  <span className="cart-price cart-column">{item.price}</span>
+                  <div className="cart-quantity cart-column">
+                    <input
+                      className="cart-quantity-input"
+                      type="number"
+                      min="1"
+                      value="1"
+                    />
+                    <button className="btn-danger" type="button" onClick={() => this.handleCartDelete(item.id)}>
+                   X
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
             <div className="cart-total">
               <strong className="cart-total-title">Total</strong>
-              <span className="cart-total-price">#0</span>
+              <span className="cart-total-price">{carts.length < 2 ? carts.map(a => a.price) : carts.reduce((a, b) => a.price + b.price)}</span>
             </div>
-            <button className="purchase-button" type="button">
+            <button className="purchase-button" disabled={carts.length === 0 ? 'disabled' : null} type="button" onClick={this.handlePurchase}>
               PURCHASE
             </button>
           </div>
@@ -114,8 +177,9 @@ export class AttendantPage extends Component {
 const mapStateToProps = state => ({
   product: state.product,
   auth: state.auth,
+  cart: state.cart,
 });
 export default connect(
   mapStateToProps,
-  { getProducts },
+  { getProducts, addToCart, removeFromCart },
 )(AttendantPage);

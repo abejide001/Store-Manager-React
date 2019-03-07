@@ -8,6 +8,8 @@ import {
   ADD_PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
   ADD_PRODUCT_FAILURE,
+  ADD_TO_CART,
+  DELETE_CART_PRODUCT,
 } from './types';
 import basePath from '../utils/basePath';
 import Notify from '../utils/Notify';
@@ -36,10 +38,7 @@ export const deleteProduct = id => dispatch => axios.delete(`${basePath}/product
     });
   })
   .catch((err) => {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    dispatch(setProductError(err));
   });
 export const editProduct = (id, productData) => dispatch => axios.put(`${basePath}/products/${id}`, productData)
   .then((res) => {
@@ -72,4 +71,21 @@ export const addProducts = productData => (dispatch) => {
     }).catch((err) => {
       dispatch(addProductError(err.response.data));
     });
+};
+
+export const addToCartAction = payload => ({
+  type: ADD_TO_CART,
+  payload,
+});
+
+export const addToCart = payload => (dispatch) => {
+  dispatch(addToCartAction(payload));
+};
+export const cartUpdatedAfterDelete = payload => ({
+  type: DELETE_CART_PRODUCT,
+  payload,
+});
+
+export const removeFromCart = payload => (dispatch) => {
+  dispatch(cartUpdatedAfterDelete(payload));
 };
