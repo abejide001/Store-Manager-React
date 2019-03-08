@@ -1,3 +1,5 @@
+import { JestEnvironment } from "@jest/environment";
+
 export const productData = {
   products: [{
     id: 3,
@@ -20,3 +22,12 @@ export const salesData = {
     value: { id: 1, product_name: 'laptop', quantity_sold: 10 },
   },
 };
+export const headerProps = {
+  auth: {
+    isAuthenticated: true,
+    user: {
+      userId: null,
+    }
+  },
+  logoutUser: jest.fn()
+}
