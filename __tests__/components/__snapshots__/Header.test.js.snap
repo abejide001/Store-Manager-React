@@ -1,7 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Header /> render() renders the component 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div>
+  <header>
+    <div
+      className="container"
+    >
+      <div
+        id="header-title"
+      >
+        <img
+          alt="logo"
+          src="test-file-stub"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Logout
+               
+            </a>
+            <Link
+              replace={false}
+              to="/admin"
+            />
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
 `;
