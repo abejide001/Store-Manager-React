@@ -1,4 +1,4 @@
-// Jenkins Pipeline Build Demo
+// Jenkins Pipeline Build
 pipeline {
   agent any
     
