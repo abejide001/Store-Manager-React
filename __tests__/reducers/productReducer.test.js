@@ -9,6 +9,7 @@ import {
   ADD_PRODUCT_REQUEST,
   ADD_PRODUCT_SUCCESS,
   ADD_TO_CART,
+  DELETE_CART_PRODUCT,
 } from '../../src/actions/types';
 import { productData } from '../components/mockData';
 
@@ -40,6 +41,14 @@ describe('Product Reducer', () => {
     };
     const newState = productReducer(productData, action);
     expect(newState.products[0].id).toEqual(4);
+  });
+  it('should handle action of type DELETE CART PRODUCT', () => {
+    const action = {
+      type: DELETE_CART_PRODUCT,
+      cart: []
+    };
+    const newState = productReducer(productData, action);
+    expect(newState.products).toEqual(productData.products);
   });
   it('should action of type GET_PRODUCT_ERROR', () => {
     const action = {

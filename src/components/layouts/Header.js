@@ -8,7 +8,7 @@ import '../../assets/css/style.css';
 import { logoutUser } from '../../actions/authActions';
 import logo from '../../assets/images/logo.png';
 
-class Header extends Component {
+export class Header extends Component {
   handleLogout = () => {
     this.props.logoutUser();
     window.location.replace('/login');
